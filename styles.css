@@ -1,0 +1,304 @@
+/* Base Styles */
+:root {
+  --primary-color: #007BFF;
+  --background-color: #ffffff;
+  --text-color: #333333;
+  --section-bg: #f8f9fa;
+  --hover-bg: rgba(0, 123, 255, 0.1);
+  --grey-color: #6c757d;
+}
+
+[data-theme="dark"] {
+  --primary-color: #0d6efd;
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --section-bg: #1e1e1e;
+  --hover-bg: rgba(13, 110, 253, 0.2);
+  --grey-color: #adb5bd;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+
+p {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+ul li {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+a {
+  color: var(--primary-color);
+}
+
+a:hover, a:focus {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--background-color) !important;
+  transition: background-color 0.3s ease;
+}
+
+.nav-link {
+  color: var(--text-color) !important;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--primary-color) !important;
+}
+
+.navbar-brand {
+  color: var(--text-color) !important;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover {
+  color: var(--primary-color) !important;
+}
+
+/* Navbar Brand Show/Hide */
+#navbar-name {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none; /* Prevent interaction when hidden */
+}
+
+#navbar-name.show-name {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto; /* Enable interaction when visible */
+}
+
+/* Remove all borders from the navbar */
+#navbar {
+  border: none;
+  box-shadow: none !important;
+}
+
+/* Optional: Remove any default border-bottom if present */
+#navbar .navbar-nav {
+  border-bottom: none;
+}
+
+/* Ensure the navbar has a transparent border if needed */
+.navbar-light.bg-light {
+  border: none;
+}
+
+/* Ensure Additional Skills Pills are Visible in Dark Mode */
+[data-theme="dark"] .badge.bg-dark {
+  background-color: #2c3e50;
+  color: #ffffff; /* Ensure text is visible */
+}
+
+/* Theme Toggle Button */
+#theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* Header Section */
+#header {
+  background: var(--section-bg);
+  transition: background-color 0.3s ease;
+}
+
+#header h1, #header h2, #header p {
+  text-align: left;
+}
+
+/* Section Titles */
+section h2 {
+  margin-bottom: 1.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+section h2::after {
+  content: '';
+  width: 60px;
+  height: 4px;
+  background: var(--primary-color);
+  display: block;
+  margin: 10px 0 0 0;
+  transition: background 0.3s ease;
+}
+
+section h2:hover::after {
+  background: var(--primary-color);
+}
+
+/* Sections */
+section {
+  background-color: var(--background-color);
+  transition: background-color 0.3s ease;
+}
+
+.bg-light {
+  background-color: var(--section-bg) !important;
+}
+
+/* Work, Education, Contest Sections Hover Effect */
+.work-section, .education-section, .projects-section, .contest-section {
+  padding: 1rem;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.work-section:hover, .education-section:hover, .projects-section:hover, .contest-section:hover {
+  background-color: var(--hover-bg);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Skills Pills */
+#skills h5 {
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  font-size: 0.9rem;
+}
+
+/* Contact Section */
+#contact ul li {
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+#contact ul li i {
+  margin-right: 10px;
+  color: var(--primary-color);
+}
+
+/* Footer */
+footer {
+  background-color: #333333;
+  color: #ffffff;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme="dark"] footer {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  section h2::after {
+    width: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}
+
+/* Additional Styles for Accordion Headers */
+.accordion-button {
+  background-color: transparent;
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  color: var(--primary-color);
+  background-color: var(--hover-bg);
+}
+
+.accordion-button::after {
+  filter: brightness(0) invert(1);
+}
+
+[data-theme="dark"] .accordion-button::after {
+  filter: none;
+}
+
+/* Override Bootstrap's .text-muted in Dark Mode */
+[data-theme="dark"] .text-muted {
+  color: var(--grey-color) !important;
+}
+
+/* Override Accordion Body Colors in Dark Mode */
+[data-theme="dark"] .accordion-body {
+  background-color: var(--section-bg);
+  color: var(--text-color);
+}
+
+/* Ensure Accordion Items Have Correct Background in Dark Mode */
+[data-theme="dark"] .accordion-item {
+  background-color: var(--background-color);
+}
+
+/* Optional: Customize Accordion Headers in Dark Mode */
+[data-theme="dark"] .accordion-button {
+  background-color: var(--section-bg);
+}
+
+[data-theme="dark"] .accordion-button.collapsed {
+  background-color: transparent;
+}
+
+/* Customize Badge Colors for Dark Mode */
+[data-theme="dark"] .badge.bg-primary {
+  background-color: #375a7f;
+}
+
+[data-theme="dark"] .badge.bg-success {
+  background-color: #00bc8c;
+}
+
+[data-theme="dark"] .badge.bg-warning.text-dark {
+  background-color: #f39c12;
+}
+
+[data-theme="dark"] .badge.bg-info {
+  background-color: #3498db!important;
+}
+
+[data-theme="dark"] .badge.bg-secondary {
+  background-color: #7f8c8d;
+}
+
+[data-theme="dark"] .badge.bg-dark {
+  color: #ffffff;
+  background-color: #2c3e50!important;
+}
+
+/* Additional Styles to Ensure Visibility of Additional Skills Pills in Dark Mode */
+[data-theme="dark"] .badge.bg-dark {
+  color: #ffffff; /* Ensures text is visible */
+}
